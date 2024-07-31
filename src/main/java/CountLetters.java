@@ -19,7 +19,7 @@ public class CountLetters {
         for(int i = 0; i<str.length() ;i++){
             char c = str.charAt(i);
             if(!map.containsKey(c)){
-                String[] arr = str.split(""+c, 2000000000);
+                String[] arr = str.split(""+c, -2);
                 map.put(c, arr.length-1);
             }
         }

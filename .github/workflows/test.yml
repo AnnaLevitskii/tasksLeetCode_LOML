@@ -29,11 +29,13 @@ jobs:
         run: ./gradlew test
 
       - name: Compile Java code
-        run: javac getBranchesCoverage.java
+        run: |
+          mkdir -p bin 
+          javac src/main/java/core/providers/JaCoCoProvider.java
 
       - name: Coverage check
         run: |
-            value=$(java getBranchesCoverage)  
+            value=$(java -cp bin JaCoCoProvider)  
           
             if [ "$value" -lt 70 ]; then
               echo "Value is less than 70: $value"

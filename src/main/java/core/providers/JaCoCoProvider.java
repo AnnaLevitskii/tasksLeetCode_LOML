@@ -8,6 +8,9 @@ import java.io.File;
 import java.io.IOException;
 
 public class JaCoCoProvider {
+    public static void main(String[] args) {
+        int value = getBranchesCoverage();
+    }
     private static int missedInstructions;
     private static int missedBranches;
 

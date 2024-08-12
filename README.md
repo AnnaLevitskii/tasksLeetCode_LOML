@@ -1,5 +1,5 @@
 # tasksLeetCode_LOML
 
-`gradle test` 
+`./gradlew test` 
 
-`gradle jacocoTestReport`
+`./gradlew jacocoTestReport`

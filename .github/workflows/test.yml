@@ -1,0 +1,41 @@
+name: API tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'oracle'
+      - name: Grant execute permission for Gradle wrapper
+        run: chmod +x gradlew
+
+      - name: Build with Gradle
+        run: ./gradlew build
+
+      - name: Run tests with Gradle
+        run: ./gradlew test
+
+      - name: Compile Java code
+        run: javac getBranchesCoverage.java
+
+      - name: Coverage check
+        run: |
+            value=$(java getBranchesCoverage)  
+          
+            if [ "$value" -lt 70 ]; then
+              echo "Value is less than 70: $value"
+              exit 1  
+            fi

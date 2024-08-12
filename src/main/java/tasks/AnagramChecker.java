@@ -1,3 +1,5 @@
+package tasks;
+
 public class AnagramChecker {
     public static boolean areAnagrams(String str1, String str2) {
         str2 = str2.toLowerCase().replace(" ", "");

@@ -1,3 +1,5 @@
+package tasks;
+
 public class PalindromeNumber {
     public static boolean isPalindrome(int x) {
         //Since the conditions of the problem

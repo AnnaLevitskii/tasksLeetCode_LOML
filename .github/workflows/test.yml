@@ -28,6 +28,11 @@ jobs:
       - name: Run tests with Gradle
         run: ./gradlew test
 
+      - name: Download Jsoup JAR
+        run: |
+          mkdir -p lib
+          curl -L -o lib/jsoup.jar https://search.maven.org/remotecontent?filepath=org/jsoup/jsoup/1.14.3/jsoup-1.14.3.jar
+
       - name: Compile Java code
         run: |
           mkdir -p bin 

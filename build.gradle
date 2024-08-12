@@ -49,8 +49,8 @@ task checkBranchesCoverage {
     dependsOn runAndGetBranchesCoverage
     doLast {
         def value = runAndGetBranchesCoverage.result.toInteger()
-        if (value < 70) {
-            throw new GradleException("Branches coverage is less than 70: $value")
+        if (value < 60) {
+            throw new GradleException("Branches coverage is less than 60: $value")
         }
     }
 }

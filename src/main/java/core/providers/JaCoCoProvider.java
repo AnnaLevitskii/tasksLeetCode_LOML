@@ -35,8 +35,8 @@ public class JaCoCoProvider {
             for (Element td : tds) {
                 if( td.text().contains("%")){
                     int pr = Integer.parseInt(td.text().split("%")[0]);
-                    if(tds.indexOf(td) ==2) missedInstructions = 100-pr;
-                    if(tds.indexOf(td) ==4) missedBranches = 100-pr;
+                    if(tds.indexOf(td) ==2) missedInstructions = pr;
+                    if(tds.indexOf(td) ==4) missedBranches = pr;
                 }
             }
        } catch(IOException e){

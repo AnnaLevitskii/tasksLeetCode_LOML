@@ -10,6 +10,7 @@ import java.io.IOException;
 public class JaCoCoProvider {
     public static void main(String[] args) {
         int value = getBranchesCoverage();
+        System.out.println(value);
     }
     private static int missedInstructions;
     private static int missedBranches;

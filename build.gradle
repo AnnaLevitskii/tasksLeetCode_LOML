@@ -33,3 +33,24 @@ jacocoTestReport {
         html.required = true
     }
 }
+
+task runAndGetBranchesCoverage(type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass.set('core.providers.JaCoCoProvider')
+    standardOutput = new ByteArrayOutputStream()
+    errorOutput = standardOutput
+    doLast {
+        def output = standardOutput.toString().trim()
+        ext.result = output
+        println "Result from getBranchesCoverage(): $output"
+    }
+}
+task checkBranchesCoverage {
+    dependsOn runAndGetBranchesCoverage
+    doLast {
+        def value = runAndGetBranchesCoverage.result.toInteger()
+        if (value < 70) {
+            throw new GradleException("Branches coverage is less than 70: $value")
+        }
+    }
+}
